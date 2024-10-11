@@ -18,7 +18,6 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
     let winner = "";
-    console.log('#pr1 - ', humanChoice, computerChoice);
     if (humanChoice.toLowerCase() === computerChoice.toLowerCase()) {
         winner = "No-one";
     } else if (humanChoice.toLowerCase() == "rock" && computerChoice.toLowerCase() == "scissors" || humanChoice.toLowerCase() == "scissors" && computerChoice.toLowerCase() == "paper" || humanChoice.toLowerCase() == "paper" && computerChoice.toLowerCase() == "rock") {
@@ -47,7 +46,6 @@ function playGame() {
             let target = event.target;
             humanSelection = target.id;
             let computerSelection = getComputerChoice();
-            console.log("#a-", target, humanSelection, computerSelection);
             let roundWinner = playRound(humanSelection, computerSelection);
             container.replaceChild(scoreDisplay, scoreDisplay);
             if (roundWinner === "Player") {
@@ -62,7 +60,6 @@ function playGame() {
                 para1.textContent = `It's a draw this round! ${humanSelection.toUpperCase()} equals ${computerSelection.toUpperCase()}`;
                 para2.textContent = `Your score: ${playerScore} and the computers score:  ${computerScore}.`;
             }
-            console.log("#score: ", playerScore, computerScore);
             if (playerScore === 5 || computerScore === 5) {
                 if (playerScore > computerScore) {
                     winner = "Player";
@@ -71,9 +68,7 @@ function playGame() {
                     winner = "Computer";
                     gameOver = true;
                 } else {
-                    console.log(`It's a draw! You scored ${playerScore} and the computer scored ${computerScore}. Game Over Value :- ${gameOver}`);
                     gameOver = true;
-                    return;
                 }
                 para2.textContent = `${winner} is the winner. You scored ${playerScore} and the computer scored ${computerScore}. Game Over Value :- ${gameOver}`;
                 gameOver = true;
